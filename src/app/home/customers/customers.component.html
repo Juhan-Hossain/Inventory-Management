@@ -1,0 +1,164 @@
+<button
+  type="button"
+  class="btn btn-info btn-sm"
+  data-bs-toggle="modal"
+  data-bs-target="#exampleModal"
+>
+  Add Customer
+</button>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Contact</th>
+      <th>Email</th>
+
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of container;let i=index">
+      <td>{{ item.id }}</td>
+      <td>{{ item.name }}</td>
+      <td>{{ item.address }}</td>
+      <td>{{ item.contact }}</td>
+      <td>{{ item.email }}</td>
+      <td>
+        <button
+          type="button"
+          class="btn btn-info btn-sm"
+          (click)="onEdit(i)"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+
+        >
+          Edit
+        </button>
+      </td>
+      <td>
+        <button
+          type="button"
+          class="btn btn-danger btn-sm"
+          (click)="onDelete(item.id)"
+        >
+          Delete
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+
+        <h5 class="modal-title" id="exampleModalLabel">
+          New Customer Regestration
+        </h5>
+
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        >
+      </button>
+      </div>
+
+      <div class="modal-body">
+        <form >
+          <div class="form-group row">
+            <label for="inputCustomerName" class="col-sm-2 col-form-label"
+              >Name</label
+            >
+            <div class="col-sm-10">
+              <input
+                type="text"
+                class="form-control"
+                id="inputCustomerName"
+                placeholder="CustomerName"
+                [(ngModel)]="name"
+                name="name"
+              />
+            </div>
+
+            <label for="inputProductDescription" class="col-sm-2 col-form-label"
+              >Address</label
+            >
+            <div class="col-sm-10">
+              <input
+                type="text"
+                class="form-control"
+                id="inputProductDescription"
+                placeholder="ProductDescription"
+                [(ngModel)]="address"
+                name="address"
+              />
+            </div>
+
+
+          <label for="inputProductDescription" class="col-sm-2 col-form-label"
+              >Contact</label
+            >
+            <div class="col-sm-10">
+              <input
+                type="number"
+                class="form-control"
+                id="inputProductDescription"
+                placeholder="ProductDescription"
+                [(ngModel)]="contact"
+                name="contact"
+              />
+            </div>
+
+            <label for="inputEmail" class="col-sm-2 col-form-label"
+              >Email</label
+            >
+            <div class="col-sm-10">
+              <input
+                type="text"
+                class="form-control"
+                id="inputEmail"
+                placeholder="Email"
+                [(ngModel)]="email"
+                name="email"
+              />
+            </div>
+
+          </div>
+
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="submit"
+              class="btn btn-primary"
+              data-bs-dismiss="modal"
+              (click)="onSubmit()"
+            >
+              Save changes
+            </button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+<!-- </div> -->

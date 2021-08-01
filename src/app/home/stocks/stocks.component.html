@@ -1,0 +1,159 @@
+<button
+  type="button"
+  class="btn btn-info btn-sm"
+  data-bs-toggle="modal"
+  data-bs-target="#exampleModal"
+>
+  Add Stock
+</button>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>ProductId</th>
+      <th>Quantity</th>
+      <th>Price</th>
+      <th>Date</th>
+
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of container; let i = index">
+      <td>{{ item.id }}</td>
+      <td>{{ item.productId }}</td>
+      <td>{{ item.quantity }}</td>
+      <td>{{ item.price }}</td>
+      <td>{{ item.date }}</td>
+      <td>
+        <button
+          type="button"
+          class="btn btn-info btn-sm"
+          (click)="onEdit(i)"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+        >
+          Edit
+        </button>
+      </td>
+      <td>
+        <button
+          type="button"
+          class="btn btn-danger btn-sm"
+          (click)="onDelete(item.id)"
+        >
+          Delete
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+          New Stock Regestration
+        </h5>
+
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+
+      <div class="modal-body">
+        <form>
+          <div class="form-group row">
+            <label for="inputProductId" class="col-sm-2 col-form-label"
+              >ProductId</label
+            >
+            <div class="col-sm-10">
+              <input
+                type="number"
+                class="form-control"
+                id="inputProductId"
+                placeholder="ProductId"
+                [(ngModel)]="productId"
+                name="productId"
+              />
+            </div>
+
+            <label for="inputQuantity" class="col-sm-2 col-form-label"
+              >Quantity</label
+            >
+            <div class="col-sm-10">
+              <input
+                type="number"
+                class="form-control"
+                id="inputQuantity"
+                placeholder="Quantity"
+                [(ngModel)]="quantity"
+                name="quantity"
+              />
+            </div>
+
+            <label for="inputPrice" class="col-sm-2 col-form-label"
+              >Price</label
+            >
+            <div class="col-sm-10">
+              <input
+                type="number"
+                class="form-control"
+                id="inputPrice"
+                placeholder="Price"
+                [(ngModel)]="price"
+                name="price"
+              />
+            </div>
+          
+
+          <label for="inputDate" class="col-sm-2 col-form-label"
+              >Date</label
+            >
+            <div class="col-sm-10">
+              <input
+                type="date"
+                class="form-control"
+                id="inputDate"
+                placeholder="Date"
+                [(ngModel)]="date"
+                name="date"
+              />
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="submit"
+              class="btn btn-primary"
+              data-bs-dismiss="modal"
+              (click)="onSubmit()"
+            >
+              Save changes
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</div>
